@@ -1,0 +1,237 @@
+// ANIME STRIKERS — modelo de dados (PostgreSQL).
+// A URL do banco vem de prisma.config.ts (variável DATABASE_URL).
+
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+model GuestPlayer {
+  id             String            @id
+  name           String
+  wins           Int               @default(0)
+  draws          Int               @default(0)
+  losses         Int               @default(0)
+  createdAt      DateTime          @default(now())
+  participations RoomParticipant[]
+}
+
+model Anime {
+  id         String      @id
+  name       String      @unique
+  color      String
+  characters Character[]
+}
+
+model CharacterAbility {
+  id          String      @id
+  name        String
+  description String
+  trigger     String
+  magnitude   Float
+  chance      Float
+  maxUses     Int
+  characters  Character[]
+}
+
+model Character {
+  id                 String           @id
+  animeId            String
+  abilityId          String
+  name               String
+  position           String
+  secondaryPositions String[]
+  rarity             String
+  ovr                Int
+  basePrice          Int
+  description        String
+  tags               String[]
+  velocidade         Int
+  finalizacao        Int
+  passe              Int
+  drible             Int
+  defesa             Int
+  fisico             Int
+  controle           Int
+  visao              Int
+  reflexos           Int
+  posicionamento     Int
+  anime              Anime            @relation(fields: [animeId], references: [id])
+  ability            CharacterAbility @relation(fields: [abilityId], references: [id])
+  auctions           Auction[]
+  teamPlayers        TeamPlayer[]
+
+  @@index([animeId])
+}
+
+model Room {
+  id                String            @id
+  code              String            @unique
+  status            String
+  hostParticipantId String?
+  maxPlayers        Int
+  botSlots          Int
+  botLevel          String
+  seed              Int
+  queue             String[]
+  queueIndex        Int               @default(0)
+  createdAt         DateTime
+  updatedAt         DateTime          @updatedAt
+  participants      RoomParticipant[]
+  auctions          Auction[]
+  teamPlayers       TeamPlayer[]
+  tournament        Tournament?
+
+  @@index([updatedAt])
+}
+
+model RoomParticipant {
+  id          String                @id
+  roomId      String
+  playerId    String?
+  name        String
+  isBot       Boolean               @default(false)
+  botLevel    String?
+  budget      Int
+  joinOrder   Int
+  room        Room                  @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  player      GuestPlayer?          @relation(fields: [playerId], references: [id])
+  team        Team?
+  bids        Bid[]
+  homeMatches Match[]               @relation("MatchHome")
+  awayMatches Match[]               @relation("MatchAway")
+  standings   TournamentStanding[]
+
+  @@unique([roomId, playerId])
+  @@unique([roomId, joinOrder])
+  @@index([playerId])
+}
+
+model Auction {
+  id           String    @id
+  roomId       String
+  characterId  String
+  index        Int
+  status       String
+  startingBid  Int
+  currentBid   Int?
+  leaderId     String?
+  startedAt    DateTime
+  endsAt       DateTime
+  winnerId     String?
+  finalPrice   Int?
+  nextStartsAt DateTime?
+  room         Room      @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  character    Character @relation(fields: [characterId], references: [id])
+  bids         Bid[]
+
+  @@unique([roomId, index])
+  @@unique([roomId, characterId])
+}
+
+model Bid {
+  id            String          @id
+  auctionId     String
+  participantId String
+  amount        Int
+  createdAt     DateTime
+  auction       Auction         @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+  participant   RoomParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  @@index([auctionId])
+  @@index([participantId])
+}
+
+model Team {
+  id            String          @id
+  participantId String          @unique
+  formation     String
+  lineup        Json
+  participant   RoomParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  players       TeamPlayer[]
+}
+
+model TeamPlayer {
+  id          String    @id
+  teamId      String
+  roomId      String
+  characterId String
+  price       Int
+  rosterIndex Int
+  team        Team      @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  room        Room      @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  character   Character @relation(fields: [characterId], references: [id])
+
+  @@unique([roomId, characterId])
+  @@unique([teamId, rosterIndex])
+}
+
+model Tournament {
+  id              String               @id
+  roomId          String               @unique
+  status          String
+  roundsPlayed    Int
+  totalRounds     Int
+  fixtures        Json
+  resultsRecorded Boolean              @default(false)
+  room            Room                 @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  matches         Match[]
+  standings       TournamentStanding[]
+}
+
+model Match {
+  id              String          @id
+  tournamentId    String
+  round           Int
+  homeId          String
+  awayId          String
+  homeGoals       Int
+  awayGoals       Int
+  stats           Json
+  mvpCharacterId  String?
+  playedAt        DateTime        @default(now())
+  tournament      Tournament      @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  home            RoomParticipant @relation("MatchHome", fields: [homeId], references: [id], onDelete: Cascade)
+  away            RoomParticipant @relation("MatchAway", fields: [awayId], references: [id], onDelete: Cascade)
+  events          MatchEvent[]
+
+  @@index([tournamentId, round])
+}
+
+model MatchEvent {
+  id                String  @id
+  matchId           String
+  seq               Int
+  minute            Int
+  type              String
+  participantId     String?
+  characterId       String?
+  assistCharacterId String?
+  text              String
+  match             Match   @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, seq])
+}
+
+model TournamentStanding {
+  id             String          @id
+  tournamentId   String
+  participantId  String
+  position       Int
+  played         Int
+  wins           Int
+  draws          Int
+  losses         Int
+  goalsFor       Int
+  goalsAgainst   Int
+  goalDiff       Int
+  points         Int
+  tournament     Tournament      @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  participant    RoomParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  @@unique([tournamentId, participantId])
+}

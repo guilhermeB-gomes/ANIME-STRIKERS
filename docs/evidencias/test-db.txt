@@ -1,0 +1,24 @@
+$ npm run test:db   (PostgreSQL 17.5 real, migration SQL aplicada)
+
+> anime-strikers@0.1.0 test:db
+> npm run test:db -w @strikers/server
+
+
+> @strikers/server@0.1.0 test:db
+> bash scripts/test-db.sh
+
+SQL aplicado. Tabelas no schema public: 14
+
+ RUN  v5.1.1 /home/claude/anime-strikers/apps/server
+
+ ✓ test/prisma-repository.test.ts (5 tests) 4031ms
+   ✓ PrismaRepository (PostgreSQL real) (5)
+     ✓ persiste uma partida inteira e a recupera idêntica em um servidor novo 1518ms
+     ✓ atualiza vitórias/empates/derrotas uma única vez e devolve o histórico 1019ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  04:22:39
+   Duration  4.43s (tests 94%, import 4%, transform 1%)
+
+exit=0

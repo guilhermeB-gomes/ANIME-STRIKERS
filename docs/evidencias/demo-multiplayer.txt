@@ -1,0 +1,54 @@
+[  0.0s] Persistência: memória (defina DATABASE_URL para usar PostgreSQL)
+[  0.0s] Servidor no ar em http://127.0.0.1:39547
+[  0.1s] Ana conectou (convidado autenticado por token assinado)
+[  0.1s] Beto conectou (convidado autenticado por token assinado)
+[  0.1s] Ana criou a sala. Código gerado: EVV7R
+[  0.2s] Beto entrou pelo código: ok
+[  0.2s] Lobby idêntico para todos: Ana (anfitrião), Kaito Bot [bot], Beto
+[  0.2s] Beto (não anfitrião) tenta iniciar: recusado → NOT_HOST
+[  0.2s] Ana inicia o leilão: ok
+[  3.0s] Leilão  1/21: Megumi Fushiguro (MEI, OVR 80, base 5 M) → Kaito Bot contratou por 30 M (24 lances)
+[  5.0s] Leilão  2/21: Sasuke Uchiha (ATA, OVR 87, base 8 M) → Ana contratou por 26 M (17 lances)
+[  6.8s] Leilão  3/21: Naruto Uzumaki (ATA, OVR 89, base 10 M) → Beto contratou por 26 M (14 lances)
+[  8.5s] Leilão  4/21: Roronoa Zoro (ZAG, OVR 86, base 8 M) → Ana contratou por 22 M (13 lances)
+[ 10.6s] Leilão  5/21: Choji Akimichi (GOL, OVR 63, base 1 M) → Ana contratou por 15 M (14 lances)
+[ 12.3s] Leilão  6/21: Takeshi Kishida (ATA, OVR 72, base 2 M) → Kaito Bot contratou por 9 M (7 lances)
+[ 14.1s] Leilão  7/21: Might Guy (ZAG, OVR 79, base 4 M) → Beto contratou por 10 M (7 lances)
+[ 17.0s] Leilão  8/21: Jun Misugi (MEI, OVR 77, base 4 M) → Beto contratou por 25 M (22 lances)
+[ 18.8s] Leilão  9/21: Rin Itoshi (ATA, OVR 88, base 10 M) → Kaito Bot contratou por 22 M (13 lances)
+[ 20.5s] Leilão 10/21: Nobara Kugisaki (ATA, OVR 73, base 2 M) → Kaito Bot contratou por 8 M (7 lances)
+[ 22.3s] Leilão 11/21: Seishiro Nagi (ATA, OVR 85, base 8 M) → Kaito Bot contratou por 14 M (7 lances)
+[ 24.3s] Leilão 12/21: Franky (GOL, OVR 73, base 2 M) → Beto contratou por 17 M (15 lances)
+[ 26.1s] Leilão 13/21: Vegeta (ATA, OVR 89, base 8 M) → Ana contratou por 18 M (9 lances)
+[ 27.8s] Leilão 14/21: Son Goku (ATA, OVR 91, base 11 M) → Ana contratou por 16 M (6 lances)
+[ 29.6s] Leilão 15/21: Ryomen Sukuna (ATA, OVR 90, base 11 M) → Beto contratou por 16 M (6 lances)
+[ 31.4s] Leilão 16/21: Toge Inumaki (ZAG, OVR 71, base 2 M) → Beto contratou por 5 M (4 lances)
+[ 33.1s] Leilão 17/21: Monkey D. Luffy (ATA, OVR 88, base 10 M) → Kaito Bot contratou por 10 M (1 lances)
+[ 34.9s] Leilão 18/21: Mr. Satan (GOL, OVR 62, base 1 M) → Kaito Bot contratou por 2 M (2 lances)
+[ 36.6s] Leilão 19/21: Rensuke Kunigami (ZAG, OVR 71, base 2 M) → Ana contratou por 2 M (1 lances)
+[ 38.4s] Leilão 20/21: Ryo Ishizaki (ZAG, OVR 63, base 1 M) → sem lances
+[ 38.6s] Leilão 21/21: Kidou Yuuto (MEI, OVR 82, base 5 M) → sem lances
+[ 38.9s] — Orçamentos e elencos ao fim do leilão (visão da Ana = visão do Beto) —
+[ 38.9s] Ana        orçamento   1 M | gasto  99 M | elenco 6 | força 84.3
+[ 38.9s] Kaito Bot  orçamento   5 M | gasto  95 M | elenco 7 | força 80
+[ 38.9s] Beto       orçamento   1 M | gasto  99 M | elenco 6 | força 81.5
+[ 38.9s] Estado idêntico nos dois clientes: SIM
+[ 38.9s] Personagens contratados: 19, repetidos: 0
+[ 38.9s] Campeonato iniciado (pontos corridos, turno único)
+[ 38.9s] Rodada 1: Beto 1 x 0 Kaito Bot | MVP: Franky
+[ 38.9s] Rodada 2: Beto 2 x 2 Ana | MVP: Ryomen Sukuna
+[ 38.9s] Rodada 3: Ana 2 x 2 Kaito Bot | MVP: Son Goku
+[ 38.9s] — Classificação final —
+  #  Treinador   P   V  E  D  GP GC  SG
+  1  Beto        4   1  1  0   3  2   1
+  2  Ana         2   0  2  0   4  4   0
+  3  Kaito Bot   1   0  1  1   2  3  -1
+[ 38.9s] Resultados idênticos para os dois clientes: SIM
+[ 38.9s] Trecho narrado da 1ª partida:
+      0' Começa a partida!
+      4' Jun Misugi ativa Visão de Jogo!
+      4' Megumi Fushiguro corta a jogada com firmeza.
+      8' Contra-ataque veloz! Jun Misugi sai em disparada.
+      8' Jun Misugi ativa Visão de Jogo!
+      8' Seishiro Nagi desarma Jun Misugi e a defesa respira.
+[ 38.9s] Demonstração concluída.

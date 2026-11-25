@@ -1,0 +1,29 @@
+$ npm run build
+
+> anime-strikers@0.1.0 build
+> npm run build --workspaces --if-present
+
+
+> @strikers/client@0.1.0 build
+> tsc -p tsconfig.json && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 2299 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.66 kB │ gzip:   0.40 kB
+dist/assets/index-DwmQPgvs.css   43.57 kB │ gzip:   8.87 kB
+dist/assets/index-lUsDLlPD.js   477.08 kB │ gzip: 148.02 kB │ map: 2,468.30 kB
+
+✓ built in 943ms
+
+> @strikers/server@0.1.0 build
+> node scripts/build.mjs
+
+
+  dist/index.js      184.9kb
+  dist/index.js.map  382.9kb
+
+⚡ Done in 56ms
+exit=0

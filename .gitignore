@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+playwright-report/
+test-results/
+.DS_Store
+
+# Cliente Prisma gerado (npm run db:generate)
+apps/server/src/generated/

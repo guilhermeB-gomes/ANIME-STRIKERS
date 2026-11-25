@@ -1,0 +1,11 @@
+$ E2E_USE_SPARTICUZ=1 npm run test:e2e
+
+Running 5 tests using 1 worker
+
+  ✓  1 [desktop] › e2e/flows.spec.ts:5:3 › Fluxo A — jogador contra bots › do leilão ao resultado do campeonato (1.2m)
+  ✓  2 [desktop] › e2e/flows.spec.ts:55:3 › Fluxos B e C — multiplayer e persistência › dois jogadores: lobby, leilão sincronizado, recarregar a página e campeonato (1.4m)
+  ✓  3 [desktop] › e2e/responsive.spec.ts:9:1 › telas principais sem cortes, sem rolagem horizontal e com botões funcionais (1.6m)
+  ✓  4 [tablet] › e2e/responsive.spec.ts:9:1 › telas principais sem cortes, sem rolagem horizontal e com botões funcionais (1.3m)
+  ✓  5 [mobile] › e2e/responsive.spec.ts:9:1 › telas principais sem cortes, sem rolagem horizontal e com botões funcionais (1.5m)
+
+  5 passed (7.9m)
