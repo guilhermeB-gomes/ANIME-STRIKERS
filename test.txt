@@ -1,0 +1,62 @@
+$ npm test
+
+> anime-strikers@0.1.0 test
+> npm run test --workspaces --if-present
+
+
+> @strikers/shared@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.1 /home/claude/anime-strikers/packages/shared
+
+ ✓ test/rules.test.ts (18 tests) 50ms
+
+ Test Files  1 passed (1)
+      Tests  18 passed (18)
+   Start at  04:22:24
+   Duration  311ms (import 52%, tests 36%, transform 9%, worker 3%)
+
+
+> @strikers/client@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.1 /home/claude/anime-strikers/apps/client
+
+ ✓ test/ui.test.tsx (15 tests) 492ms
+ ✓ test/name-form.test.tsx (2 tests) 197ms
+
+ Test Files  2 passed (2)
+      Tests  17 passed (17)
+   Start at  04:22:25
+   Duration  3.68s (environment 45%, tests 20%, import 18%, setup 13%, transform 3%)
+
+    Isolate  2 workers spawned · ~891ms startup each (spawn + environment, per file)
+             at least ~891ms faster with isolate: false — reuses workers across files instead of one per file
+
+
+> @strikers/server@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.1 /home/claude/anime-strikers/apps/server
+
+ ✓ test/socket.test.ts (10 tests) 5118ms
+   ✓ multiplayer (3 jogadores reais) (6)
+     ✓ desconexão não para o leilão e a reconexão recupera o estado da sessão 391ms
+     ✓ partida completa com 2 humanos + 1 bot: leilão, escalação, campeonato e resultados sincronizados 3956ms
+ ↓ test/prisma-repository.test.ts (5 tests | 5 skipped)
+ ✓ test/game-service.test.ts (22 tests) 415ms
+ ✓ test/engine.test.ts (22 tests) 531ms
+ ✓ test/config.test.ts (5 tests) 11ms
+
+ Test Files  4 passed | 1 skipped (5)
+      Tests  59 passed | 5 skipped (64)
+   Start at  04:22:29
+   Duration  7.58s (tests 87%, import 12%, transform 1%)
+
+    Isolate  5 workers spawned · ~107ms startup each (spawn + environment, per file)
+             at least ~428ms faster with isolate: false — reuses workers across files instead of one per file
+
+exit=0
